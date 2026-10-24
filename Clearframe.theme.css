@@ -1,0 +1,341 @@
+/**
+ * @name Clearframe
+ * @version 1.3.0
+ * @author eeliyaa
+ * @description A transparent Discord theme with macOS-style window controls, readable settings, and neutral glass styling. Based on Translucence by CapnKitten.
+ * @website https://github.com/eeliyaa/Clearframe
+ * @source https://github.com/eeliyaa/Clearframe
+ * @authorLink https://github.com/eeliyaa
+ *
+ * Original theme: Translucence by CapnKitten
+ * https://github.com/CapnKitten/Translucence
+ */
+
+@import url("https://capnkitten.github.io/BetterDiscord/Themes/Translucence/css/source.css");
+
+/* ==========================================
+   1. MAIN THEME SETTINGS
+   ========================================== */
+
+:root {
+    /* Transparent glass */
+    --app-bg: transparent;
+    --app-blur: 8px;
+    --app-margin: 18px;
+    --app-radius: 18px;
+
+    /* Neutral accent colors */
+    --accent-hue: 0;
+    --accent-saturation: 0%;
+    --accent-lightness: 88%;
+    --accent-opacity: 1;
+    --accent-text-color: #111;
+
+    /* Chat transparency */
+    --sidebar-color: rgba(0, 0, 0, .66);
+    --main-content-color: rgba(0, 0, 0, .54);
+    --message-color: rgba(0, 0, 0, .34);
+    --message-radius: 10px;
+    --message-padding-top: 8px;
+    --message-padding-side: 8px;
+
+    /* Replies */
+    --reply-hue: 0;
+    --reply-saturation: 0%;
+    --reply-lightness: 80%;
+    --reply-opacity: .9;
+
+    /* Message input */
+    --textarea-color: 0,0,0;
+    --textarea-alpha: .58;
+    --textarea-alpha-focus: .76;
+    --textarea-text-color: #fff;
+    --textarea-radius: 16px;
+
+    /* Cards */
+    --card-color: rgba(0,0,0,.54);
+    --card-color-hover: rgba(0,0,0,.67);
+    --card-color-select: rgba(0,0,0,.79);
+    --card-radius: 14px;
+
+    --button-action-color: #0c0c0c;
+    --button-radius: 12px;
+
+    /* Settings backgrounds */
+    --settings-main: rgba(14,14,14,.94);
+    --settings-sidebar: rgba(10,10,10,.97);
+    --settings-card: rgba(255,255,255,.055);
+    --settings-border: rgba(255,255,255,.11);
+
+    /* macOS window controls */
+    --mac-red: #ff5f57;
+    --mac-yellow: #febc2e;
+    --mac-green: #28c840;
+    --mac-hitbox: 32px;
+}
+
+/* ==========================================
+   2. TEXT AND ICON READABILITY
+   ========================================== */
+
+.visual-refresh.theme-dark {
+    --text-primary: #f7f7f7;
+    --text-secondary: #cecece;
+    --text-muted: #a6a6a6;
+
+    --channels-default: #d1d1d1;
+    --channel-icon: #c9c9c9;
+
+    --icon-primary: #fafafa;
+    --icon-secondary: #dfdfdf;
+    --icon-tertiary: #bdbdbd;
+
+    --interactive-normal: #e0e0e0;
+    --interactive-hover: #fff;
+    --interactive-active: #fff;
+    --interactive-muted: #929292;
+
+    --background-modifier-hover: rgba(255,255,255,.075);
+    --background-modifier-selected: rgba(255,255,255,.13);
+}
+
+/* ==========================================
+   3. READABLE SETTINGS BACKGROUNDS
+   ========================================== */
+
+.visual-refresh [class*="standardSidebarView_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="contentRegion_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="contentRegionScroller_"] {
+    background: var(--settings-main) !important;
+    background-image: none !important;
+}
+
+/* Settings sidebar */
+
+.visual-refresh [class*="standardSidebarView_"] [class*="sidebarRegion_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="sidebarRegionScroller_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="sidebar_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="sidebarContainer_"] {
+    background: var(--settings-sidebar) !important;
+    background-image: none !important;
+}
+
+/* Settings layers */
+
+.visual-refresh [class*="layer_"]:has([class*="standardSidebarView_"]) {
+    background: rgba(0,0,0,.91) !important;
+}
+
+/* ==========================================
+   4. SETTINGS HEADINGS AND TEXT
+   ========================================== */
+
+.visual-refresh [class*="standardSidebarView_"] h1,
+.visual-refresh [class*="standardSidebarView_"] h2,
+.visual-refresh [class*="standardSidebarView_"] h3,
+.visual-refresh [class*="standardSidebarView_"] [class*="title_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="header_"] {
+    color: #f5f5f5 !important;
+    opacity: 1 !important;
+}
+
+.visual-refresh [class*="standardSidebarView_"] [class*="description_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="subtext_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="note_"],
+.visual-refresh [class*="standardSidebarView_"] [class*="text-sm_"] {
+    color: #bcbcbc !important;
+}
+
+/* ==========================================
+   5. SETTINGS INPUTS AND MENU ITEMS
+   ========================================== */
+
+.visual-refresh [class*="standardSidebarView_"] input,
+.visual-refresh [class*="standardSidebarView_"] textarea,
+.visual-refresh [class*="standardSidebarView_"] [class*="inputWrapper_"] {
+    background-color: rgba(255,255,255,.065) !important;
+    border-color: var(--settings-border) !important;
+    color: #fff !important;
+}
+
+.visual-refresh [class*="standardSidebarView_"] [class*="item_"]:hover {
+    background: rgba(255,255,255,.085) !important;
+}
+
+.visual-refresh [class*="standardSidebarView_"] [class*="item_"][class*="selected_"] {
+    background: rgba(255,255,255,.15) !important;
+    color: #fff !important;
+}
+
+/* ==========================================
+   6. ROUNDED PANELS
+   ========================================== */
+
+.visual-refresh [class*="panels_"],
+.visual-refresh [class*="nowPlayingColumn_"] [class*="itemCard_"] {
+    border-radius: var(--app-radius) !important;
+}
+
+.visual-refresh [class*="nowPlayingColumn_"] [class*="itemCard_"] {
+    background: rgba(0,0,0,.48) !important;
+}
+
+.visual-refresh [class*="channel_"]:hover,
+.visual-refresh [class*="member_"]:hover {
+    border-radius: 10px !important;
+}
+
+/* ==========================================
+   7. CHAT MESSAGES
+   ========================================== */
+
+.visual-refresh [class*="messageListItem_"] {
+    margin-bottom: 3px;
+    border-radius: var(--message-radius);
+}
+
+.visual-refresh [class*="messageListItem_"]:hover {
+    background: rgba(255,255,255,.045) !important;
+}
+
+/* ==========================================
+   8. ACCESSIBILITY
+   ========================================== */
+
+.visual-refresh [class*="standardSidebarView_"]
+:is(button, a, input, textarea):focus-visible {
+    outline: 2px solid rgba(255,255,255,.65) !important;
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   9. MACOS TRAFFIC LIGHT WINDOW BUTTONS
+   ========================================== */
+
+/*
+   Uses radial gradients instead of ::before
+   to prevent duplicate drawn circles.
+*/
+
+/* Window controls container */
+
+[class*="winButtons_"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 0 6px !important;
+    background: transparent !important;
+    -webkit-app-region: no-drag !important;
+}
+
+/* Individual buttons */
+
+[class*="winButtons_"] [class*="winButton_"] {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: var(--mac-hitbox) !important;
+    height: var(--mac-hitbox) !important;
+
+    min-width: var(--mac-hitbox) !important;
+    min-height: var(--mac-hitbox) !important;
+
+    max-width: var(--mac-hitbox) !important;
+    max-height: var(--mac-hitbox) !important;
+
+    flex: 0 0 var(--mac-hitbox) !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+    outline: none !important;
+
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+
+    cursor: pointer !important;
+    -webkit-app-region: no-drag !important;
+
+    transition: filter 120ms ease !important;
+}
+
+/* Remove original Windows icons */
+
+[class*="winButtons_"] [class*="winButton_"] svg,
+[class*="winButtons_"] [class*="winButton_"] img {
+    display: none !important;
+}
+
+/* Remove pseudo-element decorations */
+
+[class*="winButtons_"] [class*="winButton_"]::before,
+[class*="winButtons_"] [class*="winButton_"]::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* ==========================================
+   10. CLOSE — RED
+   ========================================== */
+
+[class*="winButtons_"] [class*="winButtonClose_"],
+[class*="winButtons_"] [aria-label="Close"] {
+    background-image: radial-gradient(
+        circle,
+        var(--mac-red) 0 6.5px,
+        transparent 6.7px
+    ) !important;
+}
+
+/* ==========================================
+   11. MINIMIZE — YELLOW
+   ========================================== */
+
+[class*="winButtons_"] [aria-label="Minimize"],
+[class*="winButtons_"] [aria-label="Minimise"] {
+    background-image: radial-gradient(
+        circle,
+        var(--mac-yellow) 0 6.5px,
+        transparent 6.7px
+    ) !important;
+}
+
+/* ==========================================
+   12. MAXIMIZE — GREEN
+   ========================================== */
+
+[class*="winButtons_"] [aria-label="Maximize"],
+[class*="winButtons_"] [aria-label="Maximise"],
+[class*="winButtons_"] [aria-label="Restore"],
+[class*="winButtons_"] [aria-label="Restore Down"],
+[class*="winButtons_"] [aria-label="Unmaximize"] {
+    background-image: radial-gradient(
+        circle,
+        var(--mac-green) 0 6.5px,
+        transparent 6.7px
+    ) !important;
+}
+
+/* ==========================================
+   13. HOVER AND PRESS EFFECTS
+   ========================================== */
+
+[class*="winButtons_"] [class*="winButton_"]:hover {
+    filter: brightness(1.08) !important;
+}
+
+[class*="winButtons_"] [class*="winButton_"]:active {
+    filter: brightness(.78) !important;
+}
+
+/* ==========================================
+   END OF THEME
+   ========================================== */
